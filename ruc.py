@@ -1,8 +1,8 @@
 #!/usr/bin/env python2
+# -*- coding: utf-8 -*-
 #
-
-import sys
-import argparse
+# Reference:
+# https://www.anip.gob.pa/documentos/DV_RUC.pdf
 
 _arrval = {
         '00': 0,
@@ -60,8 +60,8 @@ def _digitDV(sw, ructb):
 
         nsuma += j*(ord(c)-ord('0'))
         j += 1
-    r = 11 - (nsuma % 11)
-    if r > 1:  return r
+    r = nsuma % 11
+    if r > 1:  return 11 - r
     return 0
 
 def calculateDV(ruc):
@@ -95,6 +95,9 @@ def calculateDV(ruc):
     return ret
 
 if __name__ == "__main__":
+    import sys
+    import argparse
+
     parser = argparse.ArgumentParser(description='DV calculator')
     parser.add_argument('ruc', type=str)
     args = parser.parse_args()

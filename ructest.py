@@ -1,10 +1,11 @@
 #!/usr/bin/env python2
+# -*- coding: utf-8 -*-
 
 import unittest
 import ruc
 
-class DVerrorTest(unittest.TestCase):
-    def test1(self):
+class DVTest(unittest.TestCase):
+    def test_errors(self):
         self.assertEqual(ruc.calculateDV(''),'')
         self.assertEqual(ruc.calculateDV('E'),'')
 
@@ -20,9 +21,35 @@ class DVerrorTest(unittest.TestCase):
         self.assertEqual(ruc.calculateDV('64296-75-357434'),'00')
         self.assertEqual(ruc.calculateDV('203141-1-17214'),'60')
         self.assertEqual(ruc.calculateDV('1075137-1-553125'),'18')
-        self.assertEqual(ruc.calculateDV('212871-1-263'),'37')
-        self.assertEqual(ruc.calculateDV('557-554-101637'),'61')
-        self.assertEqual(ruc.calculateDV('224080-45-201122'),'65')
+
+        #self.assertEqual(ruc.calculateDV('212871-1-263'),'37')
+        #self.assertEqual(ruc.calculateDV('557-554-101637'),'61')
+        #self.assertEqual(ruc.calculateDV('224080-4520-1122'),'65')
+
+class FormatoRUC_2005Test(unittest.TestCase):
+    def test_I(self):
+        "Formato para Cédulas (Personas Naturales)"
+        # Panam
+        self.assertEqual(ruc.calculateDV('8-442-445'),'??')
+        self.assertEqual(ruc.calculateDV('PE-10-442'),'??')
+        self.assertEqual(ruc.calculateDV('N-45-832'),'??')
+        self.assertEqual(ruc.calculateDV('E-12-342'),'??')
+        self.assertEqual(ruc.calculateDV('1AV-432-658'),'??')
+        self.assertEqual(ruc.calculateDV('4PI-234-123'),'??')
+
+    def test_II(self):
+        "Formato para Pasaportes (Persona Natural Extranjera)"
+        self.assertEqual(ruc.calculateDV('PAS1311723564'),'??')
+
+    def test_III(self):
+        "Formato para RUC (Persona Jurídica)"
+        self.assertEqual(ruc.calculateDV('11947-1027-0229562'),'??')
+        self.assertEqual(ruc.calculateDV('11947-1-0229562'),'??')
+
+    def test_IV(self):
+        "Formato para Jurídico NT"
+        self.assertEqual(ruc.calculateDV(''),'??')
+        self.assertEqual(ruc.calculateDV(''),'??')
 
 if __name__ == "__main__":
     unittest.main()
