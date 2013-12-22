@@ -66,18 +66,42 @@ def _digitDV(sw, ructb):
 
 def calculateDV(ruc):
     rs = ruc.split('-')
-    if len(rs) != 3:
+    if (len(rs) == 4 and RS[1] != 'NT') or len(rs) < 3 or len(rs) > 5:
         return ''
 
-    ructb = '0'*(10-len(rs[0])) + rs[0] + '0'*(4-len(rs[1])) + rs[1] + '0'*(6-len(rs[2])) + rs[2]
-    #print ructb
+    sw = False
 
-    if ructb[7] != 'N':
-        # RUC juridico
-        pass
+    # TODO: NT
+    if ruc[0] == 'E':
+        ructb = '0'*(4-len(rs[1])) + '0000005' + '00' + '50' + '0'*(3-len(rs[1])) + rs[1] + '0'*(5-len(rs[2])) + rs[2]
 
-    # sw es true si es ruc antiguo
-    sw = ructb[3] == '0' and ructb[4] == '0' and ructb[5] < '5'
+    elif rs[1] == 'NT':
+        ructb = '0'*(4-len(rs[1])) + '0000005' + '00'*(2-len(rs[0][:-2])) + rs[0][:-2] + '43' + '0'*(3-len(rs[2])) + rs[2] + '0'*(5-len(rs[3])) + rs[3]
+
+    elif rs[0][-2:] == 'AV':
+        ructb = '0'*(4-len(rs[1])) + '0000005' + '00'*(2-len(rs[0][:-2])) + rs[0][:-2] + '15' + '0'*(3-len(rs[1])) + rs[1] + '0'*(5-len(rs[2])) + rs[2]
+
+    elif rs[0][-2:] == 'PI':
+        ructb = '0'*(4-len(rs[1])) + '0000005' + '00'*(2-len(rs[0][:-2])) + rs[0][:-2] + '79' + '0'*(3-len(rs[1])) + rs[1] + '0'*(5-len(rs[2])) + rs[2]
+
+    elif rs[1] == 'PE':
+        ructb = '0'*(4-len(rs[1])) + '0000005' + '00' + '75' + '0'*(3-len(rs[1])) + rs[1] + '0'*(5-len(rs[2])) + rs[2]
+
+    elif rs[0] == 'PE':
+        ructb = '0'*(4-len(rs[1])) + '0000005' + '00' + '75' + '0'*(3-len(rs[1])) + rs[1] + '0'*(5-len(rs[2])) + rs[2]
+
+    elif ruc[0] == 'N':
+        ructb = '0'*(4-len(rs[1])) + '0000005' + '00' + '40' + '0'*(3-len(rs[1])) + rs[1] + '0'*(5-len(rs[2])) + rs[2]
+
+    elif 0 < len(rs[0]) <= '2':
+        ructb = '0'*(4-len(rs[1])) + '0000005' + '0'*(2-len(rs[0])) + rs[0] + '00' + '0'*(3-len(rs[1])) + rs[1] + '0'*(5-len(rs[2])) + rs[2]
+
+    else: # RUC juridico
+        ructb = '0'*(10-len(rs[0])) + rs[0] + '0'*(4-len(rs[1])) + rs[1] + '0'*(6-len(rs[2])) + rs[2]
+        #print ructb
+
+        # sw es true si es ruc antiguo
+        sw = ructb[3] == '0' and ructb[4] == '0' and ructb[5] < '5'
 
     # rutina de referencia cruzada
     t = _arrval.get(ructb[5:7])
