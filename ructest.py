@@ -30,26 +30,26 @@ class FormatoRUC_2005Test(unittest.TestCase):
     def test_I(self):
         "Formato para Cédulas (Personas Naturales)"
         # Panam
-        self.assertEqual(ruc.calculateDV('8-442-445'),'??')
-        self.assertEqual(ruc.calculateDV('PE-10-442'),'??')
-        self.assertEqual(ruc.calculateDV('N-45-832'),'??')
-        self.assertEqual(ruc.calculateDV('E-12-342'),'??')
-        self.assertEqual(ruc.calculateDV('1AV-432-658'),'??')
-        self.assertEqual(ruc.calculateDV('4PI-234-123'),'??')
+        self.assertEqual(ruc.calculateDV('8-442-445'), '08')
+        self.assertEqual(ruc.calculateDV('PE-10-442'),'50')
+        self.assertEqual(ruc.calculateDV('N-45-832'),'58')
+        self.assertEqual(ruc.calculateDV('E-12-342'),'10')
+        self.assertEqual(ruc.calculateDV('1AV-432-658'),'96')
+        self.assertEqual(ruc.calculateDV('4PI-234-123'),'96')
 
     def test_II(self):
         "Formato para Pasaportes (Persona Natural Extranjera)"
-        self.assertEqual(ruc.calculateDV('PAS1311723564'),'??')
+        self.assertEqual(ruc.calculateDV('PAS1311723564'),'')
 
     def test_III(self):
         "Formato para RUC (Persona Jurídica)"
-        self.assertEqual(ruc.calculateDV('11947-1027-0229562'),'??')
-        self.assertEqual(ruc.calculateDV('11947-1-0229562'),'??')
+        self.assertEqual(ruc.calculateDV('11947-1027-0229562'),'71')
+        self.assertEqual(ruc.calculateDV('11947-1-0229562'),'42')
 
     def test_IV(self):
         "Formato para Jurídico NT"
-        self.assertEqual(ruc.calculateDV(''),'??')
-        self.assertEqual(ruc.calculateDV(''),'??')
+        self.assertEqual(ruc.calculateDV(''),'')
+        self.assertEqual(ruc.calculateDV(''),'')
 
 if __name__ == "__main__":
     unittest.main()
