@@ -15,8 +15,9 @@ Usage:
   parser.add_argument('ruc', type=str)
   args = parser.parse_args()
 
-  dv = calculateDV(args.ruc)
+  dv = ruc.calculateDV(args.ruc)
   if len(dv) == 0:
+    print "Unable to calculate RUC!"
     sys.exit(1)
 
   print dv
