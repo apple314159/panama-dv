@@ -24,7 +24,7 @@ test_requirements = [
 
 setup(
     name='panamadv',
-    version='0.1.0',
+    version='0.1.1',
     description="Program to calculate the DV for the given RUC for Panama.",
     long_description=readme + '\n\n' + history,
     author="Jose Vasconcellos",
