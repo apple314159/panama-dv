@@ -29,7 +29,7 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Vauxoo",
     author_email='info@vauxoo.com',
-    url='https://github.com/Vauxoo/panamadv',
+    url='https://github.com/apple314159/panama-dv',
     packages=[
         'panamadv',
     ],
