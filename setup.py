@@ -28,7 +28,7 @@ setup(
     description="Program to calculate the DV for the given RUC for Panama.",
     long_description=readme + '\n\n' + history,
     author="Jose Vasconcellos",
-    author_email='info@vauxoo.com',
+    author_email='vasmac@gmail.com',
     url='https://github.com/apple314159/panama-dv',
     packages=[
         'panamadv',
