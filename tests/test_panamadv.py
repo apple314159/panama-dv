@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-import ruc
+from panamadv import ruc
 
 class DVTest(unittest.TestCase):
     def test_errors(self):
