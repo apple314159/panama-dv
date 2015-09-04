@@ -11,7 +11,6 @@ panamadv
 
 Program to calculate the DV for the given RUC for Panama.
 
-* Free software: BSD license
 * Documentation: https://panamadv.readthedocs.org.
 
 Features
