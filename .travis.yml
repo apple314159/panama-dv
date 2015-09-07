@@ -1,0 +1,17 @@
+language: python
+
+sudo: false
+
+cache: pip
+
+python:
+  - '2.7'
+
+install:
+- pip install . coveralls flake8
+
+script:
+- flake8 --exclude=__init__.py .
+- coverage run setup.py test
+
+after_success: coveralls
