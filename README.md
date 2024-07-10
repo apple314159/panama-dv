@@ -6,7 +6,7 @@ See [ALGORITMO PARA EL CALCULO DEL DIGITO VERIFICADOR DE LA RUC Y RECIBO](https:
 
 Usage:
 ```python
-  #!/usr/bin/env python2
+  #!/usr/bin/env python
   import sys
   import argparse
   import ruc
@@ -17,8 +17,8 @@ Usage:
 
   dv = ruc.calculateDV(args.ruc)
   if len(dv) == 0:
-    print "Unable to calculate RUC!"
+    print("Unable to calculate RUC!")
     sys.exit(1)
 
-  print dv
+  print(dv)
 ```

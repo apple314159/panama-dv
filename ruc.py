@@ -95,7 +95,7 @@ def calculateDV(ruc):
 
     else: # RUC juridico
         ructb = '0'*(10-len(rs[0])) + rs[0] + '0'*(4-len(rs[1])) + rs[1] + '0'*(6-len(rs[2])) + rs[2]
-        #print ructb
+        #print(ructb)
 
         # sw es true si es ruc antiguo
         sw = ructb[3] == '0' and ructb[4] == '0' and ructb[5] < '5'
@@ -104,14 +104,14 @@ def calculateDV(ruc):
     if sw:
         ructb = ructb[:5] + _arrval.get(ructb[5:7],ructb[5:7]) + ructb[7:]
 
-    #print ructb
+    #print(ructb)
 
     dv1 = _digitDV(sw, ructb)
-    #print dv1
+    #print(dv1)
     dv2 = _digitDV(sw, ructb+chr(48+dv1))
 
     ret =  chr(48+dv1) + chr(48+dv2)
-    #print ret
+    #print(ret)
     return ret
 
 if __name__ == "__main__":
