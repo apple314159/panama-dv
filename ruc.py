@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
 # Reference:
@@ -125,4 +125,4 @@ if __name__ == "__main__":
     dv = calculateDV(args.ruc)
     if len(dv) == 0:
         sys.exit(1)
-    print dv
+    print(dv)
